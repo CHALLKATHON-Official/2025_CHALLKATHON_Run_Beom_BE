@@ -123,7 +123,6 @@ app.get('/character-state', authMiddleware, async (req, res) => {
   if (level >= 6) message = '🌟 전설의 캐릭터로 진화 중!';
 
   res.json({ sizeLevel: level, message });
-});
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
