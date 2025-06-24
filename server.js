@@ -104,25 +104,22 @@ app.get('/character-state', authMiddleware, async (req, res) => {
 
     const logs = result.rows;
     const score = logs.reduce((acc, log) => acc + (log.planned ? 1 : -1), 0);
-    const level = Math.max(0, Math.floor(score / 5));
 
+    const level = Math.max(0, Math.floor(score / 5));
     let message = '🪴 아직 작지만 가능성이 보여요!';
     if (level >= 3) message = '🌳 캐릭터가 잘 자라고 있어요!';
     if (level >= 6) message = '🌟 전설의 캐릭터로 진화 중!';
 
     res.json({ sizeLevel: level, message });
+
+
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'DB 오류' });
   }
 });
 
-  const level = Math.max(0, Math.floor(score / 5));
-  let message = '🪴 아직 작지만 가능성이 보여요!';
-  if (level >= 3) message = '🌳 캐릭터가 잘 자라고 있어요!';
-  if (level >= 6) message = '🌟 전설의 캐릭터로 진화 중!';
-
-  res.json({ sizeLevel: level, message });
+const path = require('path');
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
