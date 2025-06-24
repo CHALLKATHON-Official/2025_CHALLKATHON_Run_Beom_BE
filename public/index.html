@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Time with Alice</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 로그인 화면 -->
+  <div id="login-container">
+    <h2>로그인</h2>
+    <input type="text" id="login-id" placeholder="아이디" />
+    <input type="password" id="login-pw" placeholder="비밀번호" />
+    <button onclick="login()">로그인</button>
+    <p id="login-result"></p>
+    <p><a href="#" onclick="showSignup()">회원가입</a></p>
+  </div>
+
+  <!-- 회원가입 화면 -->
+  <div id="signup-container" style="display:none;">
+    <h2>회원가입</h2>
+    <input type="text" id="signup-id" placeholder="아이디" />
+    <input type="password" id="signup-pw" placeholder="비밀번호" />
+    <button onclick="register()">가입하기</button>
+    <p><a href="#" onclick="showLogin()">← 로그인으로 돌아가기</a></p>
+  </div>
+
+  <!-- 영상 화면 -->
+  <div id="video-container" class="fade" style="display:none;">
+    <video id="intro-video" autoplay muted>
+      <source src="projectmp4.mp4" type="video/mp4" />
+      브라우저가 video 태그를 지원하지 않습니다.
+    </video>
+  </div>
+
+  <!-- Alice 화면 -->
+  <div id="alice-container" style="display:none;">
+    <h1>⏰ Time with Alice</h1>
+    <img id="alice-img" src="Alice.jpg" alt="Alice" />
+    <div class="controls">
+      <button onclick="useTime(true)">✔ 계획대로 보냄</button>
+      <button onclick="useTime(false)">❌ 낭비함</button>
+    </div>
+    <p id="status"></p>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>

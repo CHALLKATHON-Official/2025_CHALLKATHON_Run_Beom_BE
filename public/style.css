@@ -1,0 +1,63 @@
+
+body {
+  background-color: #eaf6ff;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  padding: 2em;
+}
+input {
+  display: block;
+  margin: 1em auto;
+  padding: 0.6em;
+  font-size: 1em;
+  width: 220px;
+}
+button {
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  border-radius: 10px;
+  margin: 0.5em;
+  cursor: pointer;
+}
+.fade {
+  transition: opacity 2s ease;
+}
+#video-container.fade-out {
+  opacity: 0;
+}
+img#alice-img {
+  width: 180px;
+  margin-top: 1em;
+}
+
+/* ————————————————————————————— */
+/* 여백 제거 및 풀스크린 비디오 설정 */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: fill;    /* ← cover → fill */
+  z-index: -1;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
