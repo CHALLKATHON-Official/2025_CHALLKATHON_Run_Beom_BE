@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
-const SECRET_KEY = 'my-secret-key'; // 나중에 .env 파일로 분리 가능
+const SECRET_KEY = process.env.SECRET_KEY || 'dev-secret';
 
 // 임시 DB (메모리)
 const users = {};  // { userId: password }
@@ -93,13 +93,29 @@ app.post('/screentime', authMiddleware, async (req, res) => {
 
 
 // 📌 캐릭터 상태 계산
-app.get('/character-state', authMiddleware, (req, res) => {
+app.get('/character-state', authMiddleware, async (req, res) => {
   const userId = req.user.id;
-  const logs = timeLogs[userId] || [];
 
-  const score = logs.reduce((acc, log) => {
-    return acc + (log.planned ? 1 : -1);
-  }, 0);
+  try {
+    const result = await pool.query(
+      'SELECT planned FROM screentime WHERE user_id = $1',
+      [userId]
+    );
+
+    const logs = result.rows;
+    const score = logs.reduce((acc, log) => acc + (log.planned ? 1 : -1), 0);
+    const level = Math.max(0, Math.floor(score / 5));
+
+    let message = '🪴 아직 작지만 가능성이 보여요!';
+    if (level >= 3) message = '🌳 캐릭터가 잘 자라고 있어요!';
+    if (level >= 6) message = '🌟 전설의 캐릭터로 진화 중!';
+
+    res.json({ sizeLevel: level, message });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'DB 오류' });
+  }
+});
 
   const level = Math.max(0, Math.floor(score / 5));
   let message = '🪴 아직 작지만 가능성이 보여요!';
