@@ -157,7 +157,6 @@ async function useTime(planned) {
         'Authorization': 'Bearer ' + token
       },
       body: JSON.stringify({
-        userId,
         planned,
         timestamp: new Date().toISOString()
       })
