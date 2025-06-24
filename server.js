@@ -29,7 +29,7 @@ app.post('/signup', async (req, res) => {
     await pool.query('INSERT INTO users (id, password) VALUES ($1, $2)', [id, pw]);
     res.status(200).json({ message: '회원가입 성공' });
   } catch (err) {
-    console.error(err);
+    console.error('회원가입 중 DB 오류', err);
     res.status(500).json({ message: 'DB 오류' });
   }
 });
