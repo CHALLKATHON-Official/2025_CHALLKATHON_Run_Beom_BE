@@ -1,3 +1,5 @@
+const API_BASE = "https://two025-challkathon-run-beom-be.onrender.com";
+
 function showSignup() {
   document.getElementById('login-container').style.display = 'none';
   document.getElementById('signup-container').style.display = 'block';
@@ -16,7 +18,7 @@ async function register() {
   }
 
   try {
-    const res = await fetch('http://localhost:3000/signup', {
+    const res = await fetch(`${API_BASE}/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id, pw })
@@ -41,7 +43,7 @@ async function login() {
   const pw = document.getElementById('login-pw').value;
 
   try {
-    const res = await fetch('http://localhost:3000/login', {
+    const res = await fetch(`${API_BASE}/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id, pw })
@@ -109,7 +111,7 @@ async function fetchCharacterState() {
   const token = localStorage.getItem('token');
 
   try {
-    const res = await fetch('http://localhost:3000/character-state', {
+    const res = await fetch(`${API_BASE}/character-state`, {
       method: 'GET',
       headers: {
         'Authorization': 'Bearer ' + token
@@ -148,7 +150,7 @@ async function useTime(planned) {
   }
 
   try {
-    const res = await fetch('http://localhost:3000/screentime', {
+    const res = await fetch(`${API_BASE}/screentime`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
