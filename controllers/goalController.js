@@ -1,4 +1,4 @@
-const db = require('../config/db');
+const db = require('../db');
 
 exports.saveGoal     = async (req, res) => {
   const userId   = req.user.id;
