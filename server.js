@@ -1,4 +1,4 @@
-
+const goalRoutes = require('./routes/goal');
 const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
@@ -139,6 +139,7 @@ const rankingRoutes = require('./routes/ranking');
 app.use('/screentime-v2', screentimeRoutes);  
 app.use('/status', statusRoutes);
 app.use('/ranking', rankingRoutes);
+app.use('/goal', goalRoutes);
 
 const path = require('path');
 app.get('/', (req, res) => {
