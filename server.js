@@ -63,6 +63,11 @@ app.post('/login', async (req, res) => {
   }
 });
 
+const { saveGoal, getGoal } = require('./controllers/goalController');
+app.post('/goal', authMiddleware, saveGoal);
+app.get('/goal',  authMiddleware, getGoal);
+
+
 app.post('/screentime', authMiddleware, async (req, res) => {
   const { planned, timestamp } = req.body;
   const userId = req.user.id;
