@@ -1,3 +1,21 @@
+window.addEventListener('DOMContentLoaded', () => {
+  const hourSel = document.getElementById('goal-hour');
+  const minSel  = document.getElementById('goal-minute');
+  if (!hourSel || !minSel) return;
+
+  for (let h = 0; h < 24; h++) {
+    const o = document.createElement('option');
+    o.value = o.textContent = String(h).padStart(2, '0');
+    hourSel.append(o);
+  }
+  for (let m = 0; m < 60; m++) {
+    const o = document.createElement('option');
+    o.value = o.textContent = String(m).padStart(2, '0');
+    minSel.append(o);
+  }
+});
+
+
 let loginMethod = '';
 let userName = '';
 const BASE_URL = 'https://two025-challkathon-run-beom-be.onrender.com';
