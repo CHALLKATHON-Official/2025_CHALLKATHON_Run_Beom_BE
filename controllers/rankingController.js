@@ -5,7 +5,7 @@ exports.getRanking = async (req, res) => {
     const result = await db.query(`
       SELECT user_id,
              youtube_time  + instagram_time AS wasted_time
-      FROM screentimes     -- 테이블명이 screentimes 라면 그대로
+      FROM screentimes
       WHERE date = CURRENT_DATE
       ORDER BY wasted_time DESC
     `);
