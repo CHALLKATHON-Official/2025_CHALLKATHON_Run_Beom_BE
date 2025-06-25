@@ -1,2 +1,0 @@
-# 2025_CHALLKATHON_Run_Beom
-달려라장인범123팀
