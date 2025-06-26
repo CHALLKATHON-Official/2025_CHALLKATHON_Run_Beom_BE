@@ -1,4 +1,4 @@
-const db = require('../config/db');   
+const db = require('../db');   
 
 exports.getRanking = async (req, res) => {
   try {
