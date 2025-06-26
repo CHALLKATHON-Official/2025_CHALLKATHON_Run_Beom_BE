@@ -1,4 +1,7 @@
 window.addEventListener('DOMContentLoaded', () => {
+  const bgVideo = document.getElementById('bg-video');
+    if (bgVideo) bgVideo.style.display = 'none';
+
   const hourSel = document.getElementById('goal-hour');
   const minSel  = document.getElementById('goal-minute');
   if (!hourSel || !minSel) return;
@@ -12,6 +15,18 @@ window.addEventListener('DOMContentLoaded', () => {
     const o = document.createElement('option');
     o.value = o.textContent = String(m).padStart(2, '0');
     minSel.append(o);
+  }
+
+  const toggleBtn = document.getElementById('toggle-desc');
+  const overlay   = document.getElementById('modal-overlay');
+  const closeBtn  = document.getElementById('close-modal');
+  if (toggleBtn && overlay && closeBtn) {
+    toggleBtn.addEventListener('click', () => {
+      overlay.style.display = 'flex';
+    });
+    closeBtn.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
   }
 });
 
