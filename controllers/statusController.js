@@ -1,4 +1,4 @@
-const db = require('../db');
+const db = require('../config/db');
 
 exports.getTodayStatus = async (req, res) => {
   const { userId } = req.params;
