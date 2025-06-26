@@ -1,6 +1,4 @@
 window.addEventListener('DOMContentLoaded', () => {
-  const bgVideo = document.getElementById('bg-video');
-    if (bgVideo) bgVideo.style.display = 'none';
 
   const hourSel = document.getElementById('goal-hour');
   const minSel  = document.getElementById('goal-minute');
@@ -126,6 +124,9 @@ function proceedToVideo() {
     loginBox.style.display = 'none';
     document.getElementById('signup-container').style.display = 'none';
 
+    const bgVideo = document.getElementById('bg-video');
+    if (bgVideo) bgVideo.style.display = 'none';
+
     const vc = document.getElementById('video-container');
     const video = document.getElementById('intro-video');
     vc.style.display = 'flex';
@@ -141,6 +142,7 @@ function proceedToVideo() {
     });
   }, 2000);
 }
+
 
 function setGoalTime() {
   const h = document.getElementById('goal-hour').value;
