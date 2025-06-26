@@ -1,4 +1,3 @@
-const goalRoutes = require('./routes/goal');
 const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
