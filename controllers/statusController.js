@@ -8,7 +8,7 @@ exports.getTodayStatus = async (req, res) => {
       `SELECT 
          COALESCE(youtube_time, 0) 
        + COALESCE(instagram_time, 0) AS wasted_time
-       FROM screentime
+       FROM screentimes
        WHERE user_id = $1 
          AND date    = CURRENT_DATE`,
       [userId]
