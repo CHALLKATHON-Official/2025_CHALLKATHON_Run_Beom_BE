@@ -136,6 +136,8 @@ app.get('/character-state', authMiddleware, async (req, res) => {
 const screentimeRoutes = require('./routes/screentime');
 const statusRoutes = require('./routes/status');
 const rankingRoutes = require('./routes/ranking');
+const goalRoutes       = require('./routes/goal');
+
 app.use('/screentime-v2', screentimeRoutes);  
 app.use('/status', statusRoutes);
 app.use('/ranking', rankingRoutes);
